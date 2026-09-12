@@ -22,6 +22,21 @@ Features of the images:
 
 # Howto
 
+## ARM64 images in GHCR
+
+Fork this repository, keep the fork's `main` branch updated from
+`https://github.com/pkp/containers`, and edit `.env` when PKP releases a new
+version. Every push to `main` or manual workflow run builds and publishes an
+ARM64 image to:
+
+```
+ghcr.io/<your-github-user-or-org>/<your-repository>:latest
+```
+
+The workflow also publishes `arm64`, `<tool>-<version>`, and immutable
+`sha-<commit>` tags. Make the package public in the repository's **Packages**
+settings if the image should be pullable without credentials.
+
 You can RUN the official images we publish and maintain on DockerHub, or BUILD your own.  
 The process is driven by the variables in your .env file, so it is important to adjust them according to your needs.  
 Your `docker compose up -d` will perform different actions (RUN or BUILD) depending on the value of IMAGE_SOURCE.
